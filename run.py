@@ -6,11 +6,41 @@ import pyfiglet
 print(pyfiglet.figlet_format("Investment Calculator", justify = "center", font = "slant"))
 
 # User input questions, need to add restrictions on inputs
-starting_balance = float(input("Please enter your starting balance:\n"))
-interest_rate = float(input("Please enter the interest rate:\n"))
+while True:
+    try:
+        starting_balance = float(input("Please enter your starting balance:\n"))
+        break
+    except ValueError:
+        print("Please enter a number as your starting balance....\n")
+
+while True:
+    try:
+        interest_rate = float(input("Please enter the interest rate:\n"))
+        break
+    except ValueError:
+        print("Please enter a number as your starting balance....\n")
+
+while True:
+    try:
+        additional_deposit = float(input("Additional deposit at each increment stage (optional):\n"))
+        break
+    except ValueError:
+        print("Please enter a number as your starting balance....\n")
+
+while True:
+    try:
+        compound_period = int(input("Investment period length in years:\n"))
+        break
+    except ValueError:
+        print("Please enter a number as your starting balance....\n")
+
+
+
+
+
+
+"""
 increment_rate = input("Increment timeframe (daily, weekly, monthly, yearly):\n")
-additional_deposit = int(input("Additional deposit at each increment stage (optional):\n"))
-compound_period = int(input("Investment period length in years:\n"))
 calculate = input("Would you like to calculate?:\n")
 
 
@@ -39,3 +69,4 @@ while i < increments:
 
 
 print(starting_balance)
+"""
