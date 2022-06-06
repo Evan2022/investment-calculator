@@ -6,12 +6,13 @@ import pyfiglet
 print(pyfiglet.figlet_format("Investment Calculator", justify = "center", font = "slant"))
 
 # User input questions, need to add restrictions on inputs
-starting_balance = int(input("Please enter your starting balance: "))
-interest_rate = float(input("Please enter the interest rate: "))
-increment_rate = input("Increment timeframe (daily, weekly, monthly, yearly): ")
-additional_deposit = int(input("Additional deposit at each increment stage (optional): "))
-compound_period = int(input("Investment period length in years: "))
-calculate = input("Would you like to calculate?: ")
+starting_balance = float(input("Please enter your starting balance:\n"))
+interest_rate = float(input("Please enter the interest rate:\n"))
+increment_rate = input("Increment timeframe (daily, weekly, monthly, yearly):\n")
+additional_deposit = int(input("Additional deposit at each increment stage (optional):\n"))
+compound_period = int(input("Investment period length in years:\n"))
+calculate = input("Would you like to calculate?:\n")
+
 
 # Calculating the correct rate as a decimal
 real_interest_rate = interest_rate * 0.01
@@ -35,5 +36,6 @@ while i < increments:
     i += 1
     if i == increments:
         break
+
 
 print(starting_balance)
