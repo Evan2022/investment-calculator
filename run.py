@@ -5,7 +5,7 @@ import pyfiglet
 
 print(pyfiglet.figlet_format("Investment Calculator", justify = "center", font = "slant"))
 
-# User input questions, need to add restrictions on inputs
+# User input questions with number restrictions
 while True:
     try:
         starting_balance = float(input("Please enter your starting balance:\n"))
@@ -20,6 +20,14 @@ while True:
     except ValueError:
         print("Please enter a number as your starting balance....\n")
 
+# User input question with text 
+
+increment_rate = input("Increment timeframe (daily, weekly, monthly, yearly):\n")
+increment_rate = increment_rate.lower()
+
+while increment_rate != "daily" and increment_rate != "weekly" and increment_rate != "monthly" and increment_rate != "yearly":
+    increment_rate = input("Please enter either daily, weekly, monthly or yearly:\n")
+
 while True:
     try:
         additional_deposit = float(input("Additional deposit at each increment stage (optional):\n"))
@@ -33,9 +41,6 @@ while True:
         break
     except ValueError:
         print("Please enter a number as your starting balance....\n")
-
-
-
 
 
 
