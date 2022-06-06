@@ -3,4 +3,4 @@
 import math
 import pyfiglet
 
-print("Investment Calculator")
+print(pyfiglet.figlet_format("Investment Calculator", justify = "center", font = "slant"))
