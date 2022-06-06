@@ -25,3 +25,15 @@ elif increment_rate == "monthly":
     increment_rate = 12
 else:
     increment_rate = 1
+
+# Create while statement to loop through increments and increment balance by interest rate and additional deposit rate
+
+increments = increment_rate * compound_period
+i = 0
+while i < increments:
+    starting_balance = starting_balance * (1 + real_interest_rate) + additional_deposit
+    i += 1
+    if i == increments:
+        break
+
+print(starting_balance)
