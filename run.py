@@ -43,11 +43,10 @@ while True:
         print("Please enter a number as your starting balance....\n")
 
 
-
+# Working on calculate input
 """
-increment_rate = input("Increment timeframe (daily, weekly, monthly, yearly):\n")
 calculate = input("Would you like to calculate?:\n")
-
+"""
 
 # Calculating the correct rate as a decimal
 real_interest_rate = interest_rate * 0.01
@@ -72,6 +71,4 @@ while i < increments:
     if i == increments:
         break
 
-
 print(starting_balance)
-"""
