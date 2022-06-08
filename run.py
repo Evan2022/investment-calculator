@@ -11,14 +11,14 @@ while True:
         starting_balance = float(input("Please enter your starting balance:\n"))
         break
     except ValueError:
-        print("Please enter a number as your starting balance....\n")
+        print("Please enter a number as your starting balance....")
 
 while True:
     try:
         interest_rate = float(input("Please enter the interest rate:\n"))
         break
     except ValueError:
-        print("Please enter a number as your starting balance....\n")
+        print("Please enter a number as the interest rate....\")
 
 # User input question with text 
 
@@ -27,20 +27,21 @@ increment_rate = increment_rate.lower()
 
 while increment_rate != "daily" and increment_rate != "weekly" and increment_rate != "monthly" and increment_rate != "yearly":
     increment_rate = input("Please enter either daily, weekly, monthly or yearly:\n")
+    increment_rate = increment_rate.lower()
 
 while True:
     try:
         additional_deposit = float(input("Additional deposit at each increment stage (optional):\n"))
         break
     except ValueError:
-        print("Please enter a number as your starting balance....\n")
+        print("Please enter a number as the deposit amount....")
 
 while True:
     try:
         compound_period = int(input("Investment period length in years:\n"))
         break
     except ValueError:
-        print("Please enter a number as your starting balance....\n")
+        print("Please enter a number as the investment period length....\n")
 
 
 # Working on calculate input
@@ -71,4 +72,5 @@ while i < increments:
     if i == increments:
         break
 
-print(starting_balance)
+#print(starting_balance)
+print(format(starting_balance, '.2f'))
