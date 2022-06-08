@@ -18,7 +18,7 @@ while True:
         interest_rate = float(input("Please enter the interest rate:\n"))
         break
     except ValueError:
-        print("Please enter a number as the interest rate....\")
+        print("Please enter a number as the interest rate....")
 
 # User input question with text 
 
