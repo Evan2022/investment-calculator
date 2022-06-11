@@ -5,6 +5,9 @@ import pyfiglet
 import colorama
 from colorama import Fore, Back, Style
 colorama.init(autoreset=True)
+from tabulate import tabulate
+
+
 
 print(pyfiglet.figlet_format("Investment Calculator", justify = "center", font = "slant"))
 
