@@ -66,15 +66,16 @@ else:
 
 increments = increment_rate * compound_period
 
-increments_list = []
+year_end_list = []
 i = 0
 while i < increments:
+    if i%increment_rate == 0:
+        year_end_list.append(format(starting_balance, '.2f'))
     starting_balance = starting_balance * (1 + real_interest_rate) + additional_deposit
-    increments_list.append(starting_balance)
-    print(increments_list)
     i += 1
     if i == increments:
         break
 
-#print(starting_balance)
+year_end_list.append(format(starting_balance, '.2f'))
+print(year_end_list)
 print(format(starting_balance, '.2f'))
