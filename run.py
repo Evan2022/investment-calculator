@@ -72,16 +72,29 @@ else:
 
 increments = increment_rate * compound_period
 
-year_end_list = []
+final_list = [
+    ["MONTH","BALANCE","DEPOSITS","GAIN"],
+    
+    ]
 i = 0
 while i < increments:
+    year_end_list = []
+    deposits = additional_deposit * i
+    gain = starting_balance - deposits
     if i%increment_rate == 0:
+        year_end_list.append(i)
         year_end_list.append(format(starting_balance, '.2f'))
+        year_end_list.append(deposits)
+        year_end_list.append(format(gain, '.2f'))
+        final_list.append(year_end_list)
     starting_balance = starting_balance * (1 + real_interest_rate) + additional_deposit
     i += 1
     if i == increments:
+        year_end_list.append(i)
+        year_end_list.append(format(starting_balance, '.2f'))
+        year_end_list.append(deposits)
+        year_end_list.append(format(gain, '.2f'))
+        final_list.append(year_end_list)
         break
-
-year_end_list.append(format(starting_balance, '.2f'))
-print(year_end_list)
-print(format(starting_balance, '.2f'))
+    
+print(tabulate(final_list, tablefmt="plain"))
