@@ -14,13 +14,19 @@ from functions import typewrite
 
 print(pyfiglet.figlet_format("Investment Calculator", justify = "center", font = "slant"))
 
-typewrite('"Most people overestimate what they can do in one year and \nunderestimate what they can do in ten years."- Bill Gates \n')
+typewrite('''"Most people overestimate what they can do in one year and\nunderestimate what they can do in ten years."- Bill Gates \n''')
 
 print("\n")
 
-typewrite("This calculator has been built to show the power of long term saving and investing")
+typewrite("This calculator has been built to show the power of long term\nsaving and investing")
 
 print("\n")
+
+user_selections = [
+    ["BALANCE", "INTEREST RATE", "TIMEFRAME", "DEPOSIT", "YEARS"]
+]
+
+selections = []
 
 while True:
     try:
@@ -31,6 +37,8 @@ while True:
         typewrite("Please enter a number as your starting balance....")
         print("\n")
 
+selections.append(starting_balance)
+
 while True:
     try:
         interest_rate = float(input("Please enter the interest rate:\n"))
@@ -39,26 +47,30 @@ while True:
     except ValueError:
         typewrite("Please enter a number as the interest rate....")
         print("\n")
-
-# User input question with text 
+selections.append(interest_rate)
 
 increment_rate = input("Increment timeframe (daily, weekly, monthly, yearly):\n")
 print("\n")
 increment_rate = increment_rate.lower()
+
 
 while increment_rate != "daily" and increment_rate != "weekly" and increment_rate != "monthly" and increment_rate != "yearly":
     increment_rate = input("Please enter either daily, weekly, monthly or yearly:\n")
     print("\n")
     increment_rate = increment_rate.lower()
 
+selections.append(increment_rate)
+
 while True:
     try:
-        additional_deposit = float(input("Additional deposit at each increment stage (optional):\n"))
+        additional_deposit = float(input("Additional deposit at each increment stage:\n"))
         print("\n")
         break
     except ValueError:
         typewrite("Please enter a number as the deposit amount....")
         print("\n")
+
+selections.append(additional_deposit)
 
 while True:
     try:
@@ -69,11 +81,17 @@ while True:
         typewrite("Please enter a number as the investment period length....\n")
         print("\n")
 
+selections.append(compound_period)
 
-# Working on calculate input
-"""
-calculate = input("Would you like to calculate?:\n")
-"""
+user_selections.append(selections)
+
+typewrite("Your selections are as follows:\n")
+print("\n")
+
+print(tabulate(user_selections, tablefmt="plain"))
+print("\n")
+
+#create calculate function asking user if they are happy with their selections 
 
 # Calculating the correct rate as a decimal
 real_interest_rate = interest_rate * 0.01
