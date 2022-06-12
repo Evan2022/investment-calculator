@@ -14,20 +14,22 @@ from functions import typewrite
 
 print(pyfiglet.figlet_format("Investment Calculator", justify = "center", font = "slant"))
 
+typewrite('"Most people overestimate what they can do in one year and \nunderestimate what they can do in ten years."- Bill Gates \n')
+
 # User input questions with number restrictions
 while True:
     try:
         starting_balance = float(input("Please enter your starting balance:\n"))
         break
     except ValueError:
-        print("Please enter a number as your starting balance....")
+        typewrite("Please enter a number as your starting balance....")
 
 while True:
     try:
         interest_rate = float(input("Please enter the interest rate:\n"))
         break
     except ValueError:
-        print("Please enter a number as the interest rate....")
+        typewrite("Please enter a number as the interest rate....")
 
 # User input question with text 
 
@@ -43,14 +45,14 @@ while True:
         additional_deposit = float(input("Additional deposit at each increment stage (optional):\n"))
         break
     except ValueError:
-        print("Please enter a number as the deposit amount....")
+        typewrite("Please enter a number as the deposit amount....")
 
 while True:
     try:
         compound_period = int(input("Investment period length in years:\n"))
         break
     except ValueError:
-        print("Please enter a number as the investment period length....\n")
+        typewrite("Please enter a number as the investment period length....\n")
 
 
 # Working on calculate input
