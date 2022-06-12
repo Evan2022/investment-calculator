@@ -1,11 +1,14 @@
 # Write your code to expect a terminal of 80 characters wide and 24 rows high
 
 import math
+import sys
+import time
 import pyfiglet
 import colorama
 from colorama import Fore, Back, Style
 colorama.init(autoreset=True)
 from tabulate import tabulate
+from functions import typewrite
 
 
 
@@ -58,7 +61,6 @@ calculate = input("Would you like to calculate?:\n")
 # Calculating the correct rate as a decimal
 real_interest_rate = interest_rate * 0.01
 
-# If statement based on the users increment_rate input
 if increment_rate == "daily":
     increment_rate = 365
 elif increment_rate == "weekly":
@@ -68,14 +70,12 @@ elif increment_rate == "monthly":
 else:
     increment_rate = 1
 
-# Create while statement to loop through increments and increment balance by interest rate and additional deposit rate
-
 increments = increment_rate * compound_period
 
 final_list = [
     ["MONTH","BALANCE","DEPOSITS","GAIN"],
-    
     ]
+
 i = 0
 while i < increments:
     year_end_list = []
@@ -90,6 +90,8 @@ while i < increments:
     starting_balance = starting_balance * (1 + real_interest_rate) + additional_deposit
     i += 1
     if i == increments:
+        deposits = additional_deposit * i
+        gain = starting_balance - deposits
         year_end_list.append(i)
         year_end_list.append(format(starting_balance, '.2f'))
         year_end_list.append(deposits)
