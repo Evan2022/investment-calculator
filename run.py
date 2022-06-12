@@ -16,43 +16,58 @@ print(pyfiglet.figlet_format("Investment Calculator", justify = "center", font =
 
 typewrite('"Most people overestimate what they can do in one year and \nunderestimate what they can do in ten years."- Bill Gates \n')
 
-# User input questions with number restrictions
+print("\n")
+
+typewrite("This calculator has been built to show the power of long term saving and investing")
+
+print("\n")
+
 while True:
     try:
         starting_balance = float(input("Please enter your starting balance:\n"))
+        print("\n")
         break
     except ValueError:
         typewrite("Please enter a number as your starting balance....")
+        print("\n")
 
 while True:
     try:
         interest_rate = float(input("Please enter the interest rate:\n"))
+        print("\n")
         break
     except ValueError:
         typewrite("Please enter a number as the interest rate....")
+        print("\n")
 
 # User input question with text 
 
 increment_rate = input("Increment timeframe (daily, weekly, monthly, yearly):\n")
+print("\n")
 increment_rate = increment_rate.lower()
 
 while increment_rate != "daily" and increment_rate != "weekly" and increment_rate != "monthly" and increment_rate != "yearly":
     increment_rate = input("Please enter either daily, weekly, monthly or yearly:\n")
+    print("\n")
     increment_rate = increment_rate.lower()
 
 while True:
     try:
         additional_deposit = float(input("Additional deposit at each increment stage (optional):\n"))
+        print("\n")
         break
     except ValueError:
         typewrite("Please enter a number as the deposit amount....")
+        print("\n")
 
 while True:
     try:
         compound_period = int(input("Investment period length in years:\n"))
+        print("\n")
         break
     except ValueError:
         typewrite("Please enter a number as the investment period length....\n")
+        print("\n")
 
 
 # Working on calculate input
