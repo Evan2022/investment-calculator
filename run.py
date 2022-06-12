@@ -6,19 +6,19 @@ import time
 import pyfiglet
 import colorama
 from colorama import Fore, Back, Style
-colorama.init(autoreset=True)
+colorama.init()
 from tabulate import tabulate
 from functions import typewrite
 
 
+print(Fore.GREEN + pyfiglet.figlet_format("Investment Calculator", justify="center", font="slant"))
 
-print(pyfiglet.figlet_format("Investment Calculator", justify = "center", font = "slant"))
-
+print(Fore.WHITE)
 typewrite('''"Most people overestimate what they can do in one year and\nunderestimate what they can do in ten years."- Bill Gates \n''')
 
 print("\n")
 
-typewrite("This calculator has been built to show the power of long term\nsaving and investing")
+typewrite("This calculator has been built to show the power of consistent\nlong term saving and investing.")
 
 print("\n")
 
@@ -34,8 +34,9 @@ while True:
         print("\n")
         break
     except ValueError:
+        print(Fore.RED)
         typewrite("Please enter a number as your starting balance....")
-        print("\n")
+        print(Fore.WHITE + "\n")
 
 selections.append(starting_balance)
 
@@ -45,8 +46,9 @@ while True:
         print("\n")
         break
     except ValueError:
+        print(Fore.RED)
         typewrite("Please enter a number as the interest rate....")
-        print("\n")
+        print(Fore.WHITE + "\n")
 selections.append(interest_rate)
 
 increment_rate = input("Increment timeframe (daily, weekly, monthly, yearly):\n")
@@ -55,8 +57,9 @@ increment_rate = increment_rate.lower()
 
 
 while increment_rate != "daily" and increment_rate != "weekly" and increment_rate != "monthly" and increment_rate != "yearly":
+    print(Fore.RED)
     increment_rate = input("Please enter either daily, weekly, monthly or yearly:\n")
-    print("\n")
+    print(Fore.WHITE)
     increment_rate = increment_rate.lower()
 
 selections.append(increment_rate)
@@ -67,8 +70,9 @@ while True:
         print("\n")
         break
     except ValueError:
+        print(Fore.RED)
         typewrite("Please enter a number as the deposit amount....")
-        print("\n")
+        print(Fore.WHITE + "\n")
 
 selections.append(additional_deposit)
 
@@ -78,8 +82,9 @@ while True:
         print("\n")
         break
     except ValueError:
+        print(Fore.RED)
         typewrite("Please enter a number as the investment period length....\n")
-        print("\n")
+        print(Fore.WHITE + "\n")
 
 selections.append(compound_period)
 
@@ -125,6 +130,7 @@ while i < increments:
     starting_balance = starting_balance * (1 + real_interest_rate) + additional_deposit
     i += 1
     if i == increments:
+        year_end_list = []
         deposits = additional_deposit * i
         gain = starting_balance - deposits
         year_end_list.append(i)
