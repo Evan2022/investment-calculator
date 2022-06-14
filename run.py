@@ -14,12 +14,10 @@ from functions import typewrite
 print(Fore.GREEN + pyfiglet.figlet_format("Investment Calculator", justify="center", font="slant"))
 
 print(Fore.WHITE)
-typewrite('''"Most people overestimate what they can do in one year and\nunderestimate what they can do in ten years."- Bill Gates \n''')
-
+typewrite('"Most people overestimate what they can do in one year and underestimate\nwhat they can do in ten years."- Bill Gates \n')
 print("\n")
 
-typewrite("This calculator has been built to show the power of consistent\nlong term saving and investing.")
-
+typewrite("This calculator has been built to show the power of consistent long term\nsaving and investing.\n")
 print("\n")
 
 user_selections = [
@@ -35,7 +33,7 @@ while True:
         break
     except ValueError:
         print(Fore.RED)
-        typewrite("Please enter a number as your starting balance....")
+        typewrite("Please enter a number as your starting balance....\n")
         print(Fore.WHITE + "\n")
 
 selections.append(starting_balance)
@@ -47,21 +45,21 @@ while True:
         break
     except ValueError:
         print(Fore.RED)
-        typewrite("Please enter a number as the interest rate....")
+        typewrite("Please enter a number as the interest rate....\n")
         print(Fore.WHITE + "\n")
 selections.append(interest_rate)
 
+increment_list = ["daily", "daily ", "weekly", "weekly ", "monthly", "monthly ", "yearly", "yearly "]
 increment_rate = input("Increment timeframe (daily, weekly, monthly, yearly):\n")
-print("\n")
 increment_rate = increment_rate.lower()
 
-
-while increment_rate != "daily" and increment_rate != "weekly" and increment_rate != "monthly" and increment_rate != "yearly":
+while (increment_rate not in increment_list):
     print(Fore.RED)
-    increment_rate = input("Please enter either daily, weekly, monthly or yearly:\n")
-    print(Fore.WHITE)
+    typewrite("Please enter either daily, weekly, monthly or yearly....\n")
+    print(Fore.WHITE + "\n")
+    increment_rate = input("Increment timeframe (daily, weekly, monthly, yearly):\n")
+    print("\n")
     increment_rate = increment_rate.lower()
-
 selections.append(increment_rate)
 
 while True:
@@ -71,7 +69,7 @@ while True:
         break
     except ValueError:
         print(Fore.RED)
-        typewrite("Please enter a number as the deposit amount....")
+        typewrite("Please enter a number as the deposit amount....\n")
         print(Fore.WHITE + "\n")
 
 selections.append(additional_deposit)
@@ -96,10 +94,7 @@ print("\n")
 print(tabulate(user_selections, tablefmt="plain"))
 print("\n")
 
-#create calculate function asking user if they are happy with their selections 
 
-# Calculating the correct rate as a decimal
-real_interest_rate = interest_rate * 0.01
 
 if increment_rate == "daily":
     increment_rate = 365
@@ -109,6 +104,8 @@ elif increment_rate == "monthly":
     increment_rate = 12
 else:
     increment_rate = 1
+
+real_interest_rate = interest_rate * 0.01
 
 increments = increment_rate * compound_period
 
