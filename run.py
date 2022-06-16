@@ -64,6 +64,7 @@ selections.append(increment_rate)
 
 while True:
     try:
+        print("\n")
         additional_deposit = float(input("Additional deposit at each increment stage:\n"))
         print("\n")
         break
@@ -91,9 +92,25 @@ user_selections.append(selections)
 typewrite("Your selections are as follows:\n")
 print("\n")
 
-print(tabulate(user_selections, tablefmt="plain"))
+print(tabulate(user_selections, tablefmt="grid"))
 print("\n")
 
+while True: 
+    calculate_list = ["yes", "yes ", "y", "y "]
+    reload_list = ["no", "no ", "n", "n "]
+    calculate = input("Are you happy with your selections?:\n")
+    print("\n")
+    if calculate.lower() in reload_list:
+        sys.exit(0)
+    elif calculate.lower() in calculate_list:
+        typewrite("Calculating....\n")
+        time.sleep(0.5)
+        print("\n")
+        break
+    else:
+        print(Fore.RED)
+        typewrite("Please enter yes or no to proceed....\n")
+        print(Fore.WHITE + "\n")
 
 
 if increment_rate == "daily":
@@ -110,7 +127,7 @@ real_interest_rate = interest_rate * 0.01
 increments = increment_rate * compound_period
 
 final_list = [
-    ["MONTH","BALANCE","DEPOSITS","GAIN"],
+    ["INCREMENTS","BALANCE","DEPOSITS","GAIN"],
     ]
 
 gain = 0
