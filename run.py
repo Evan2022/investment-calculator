@@ -21,7 +21,7 @@ print("\n")
 
 
 user_selections = [
-    ["BALANCE", "INTEREST RATE", "TIMEFRAME", "DEPOSIT", "YEARS"]
+    ["BALANCE", "INTEREST RATE", "TIMEFRAME", "ADDITIONAL DEPOSIT", "YEARS"]
 ]
 
 final_list = [
@@ -166,4 +166,7 @@ while i < increments:
         final_list.append(year_end_list)
         break
     
-print(tabulate(final_list, tablefmt="plain"))
+print(tabulate(final_list, tablefmt="grid"))
+print(Fore.GREEN + "\n")
+typewrite("If you're lucky enough to be a Quintillionaire or better at the end of your investment,\nyour results will be displayed as exponential numbers.")
+print(Fore.WHITE + "\n")
