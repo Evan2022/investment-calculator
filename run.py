@@ -29,7 +29,7 @@ final_list = [
 
 selections = []
 
-increment_list = ["daily", "daily ", "weekly", "weekly ", "monthly","monthly ", "yearly", "yearly "]
+increment_list = ["daily", "daily ", "weekly", "weekly ", "monthly", "monthly ", "yearly", "yearly "]
 
 while True:
     try:
