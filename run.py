@@ -8,7 +8,7 @@ import colorama
 from colorama import Fore, Back, Style
 colorama.init()
 from tabulate import tabulate
-from functions import typewrite
+from functions import typewrite, restart_program
 
 
 print(Fore.GREEN + pyfiglet.figlet_format("Investment Calculator", justify="center", font="slant"))
@@ -20,11 +20,17 @@ print("\n")
 typewrite("This calculator has been built to show the power of consistent long term\nsaving and investing.\n")
 print("\n")
 
+
 user_selections = [
     ["BALANCE", "INTEREST RATE", "TIMEFRAME", "DEPOSIT", "YEARS"]
 ]
 
+final_list = [
+    ["INCREMENTS","BALANCE","DEPOSITS","GAIN"],
+    ]
+
 selections = []
+
 
 while True:
     try:
@@ -36,8 +42,6 @@ while True:
         typewrite("Please enter a number as your starting balance....\n")
         print(Fore.WHITE + "\n")
 
-selections.append(starting_balance)
-
 while True:
     try:
         interest_rate = float(input("Please enter the interest rate:\n"))
@@ -47,7 +51,6 @@ while True:
         print(Fore.RED)
         typewrite("Please enter a number as the interest rate....\n")
         print(Fore.WHITE + "\n")
-selections.append(interest_rate)
 
 increment_list = ["daily", "daily ", "weekly", "weekly ", "monthly", "monthly ", "yearly", "yearly "]
 increment_rate = input("Increment timeframe (daily, weekly, monthly, yearly):\n")
@@ -60,7 +63,6 @@ while (increment_rate not in increment_list):
     increment_rate = input("Increment timeframe (daily, weekly, monthly, yearly):\n")
     print("\n")
     increment_rate = increment_rate.lower()
-selections.append(increment_rate)
 
 while True:
     try:
@@ -73,8 +75,6 @@ while True:
         typewrite("Please enter a number as the deposit amount....\n")
         print(Fore.WHITE + "\n")
 
-selections.append(additional_deposit)
-
 while True:
     try:
         compound_period = int(input("Investment period length in years:\n"))
@@ -85,8 +85,11 @@ while True:
         typewrite("Please enter a number as the investment period length....\n")
         print(Fore.WHITE + "\n")
 
+selections.append(starting_balance)
+selections.append(interest_rate)
+selections.append(increment_rate)
+selections.append(additional_deposit)
 selections.append(compound_period)
-
 user_selections.append(selections)
 
 typewrite("Your selections are as follows:\n")
@@ -101,10 +104,10 @@ while True:
     calculate = input("Are you happy with your selections?:\n")
     print("\n")
     if calculate.lower() in reload_list:
-        sys.exit(0)
+        restart_program()
     elif calculate.lower() in calculate_list:
-        typewrite("Calculating....\n")
-        time.sleep(0.5)
+        typewrite(f"Your annual results over an investment period of {compound_period} years are as follows:\n")
+        time.sleep(1.0)
         print("\n")
         break
     else:
@@ -123,12 +126,7 @@ else:
     increment_rate = 1
 
 real_interest_rate = interest_rate * 0.01
-
 increments = increment_rate * compound_period
-
-final_list = [
-    ["INCREMENTS","BALANCE","DEPOSITS","GAIN"],
-    ]
 
 gain = 0
 i = 0
