@@ -1,11 +1,10 @@
 # Write your code to expect a terminal of 80 characters wide and 24 rows high
 
-import math
 import sys
 import time
 import pyfiglet
 import colorama
-from colorama import Fore, Back, Style
+from colorama import Fore
 colorama.init()
 from tabulate import tabulate
 from functions import typewrite, restart_program
@@ -26,7 +25,7 @@ user_selections = [
 ]
 
 final_list = [
-    ["INCREMENTS","BALANCE","DEPOSITS","GAIN"],
+    ["INCREMENTS", "DEPOSITS", "GAIN", "BALANCE"],
     ]
 
 selections = []
@@ -135,9 +134,9 @@ while i < increments:
     deposits = additional_deposit * i
     if i%increment_rate == 0:
         year_end_list.append(i)
-        year_end_list.append(format(starting_balance, '.2f'))
         year_end_list.append(deposits)
         year_end_list.append(format(gain, '.2f'))
+        year_end_list.append(format(starting_balance, '.2f'))
         final_list.append(year_end_list)
     gain = gain + starting_balance * (1 + real_interest_rate) - starting_balance
     starting_balance = starting_balance * (1 + real_interest_rate) + additional_deposit
@@ -146,10 +145,10 @@ while i < increments:
         year_end_list = []
         deposits = additional_deposit * i
         year_end_list.append(i)
-        year_end_list.append(format(starting_balance, '.2f'))
         year_end_list.append(deposits)
         year_end_list.append(format(gain, '.2f'))
+        year_end_list.append(format(starting_balance, '.2f'))
         final_list.append(year_end_list)
         break
     
-print(tabulate(final_list, tablefmt="plain"))
+print(tabulate(final_list, tablefmt="grid"))
