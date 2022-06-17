@@ -137,9 +137,15 @@ while i < increments:
     balance_length = len(str(starting_balance))
     if i%increment_rate == 0:
         year_end_list.append(i)
-        year_end_list.append(deposits)
-        year_end_list.append(format(gain, '4e'))
-        year_end_list.append(format(starting_balance, '4e'))
+        year_end_list.append(format(deposits, '.2f'))
+        if gain_length > 20:
+            year_end_list.append(format(gain, '20e'))
+        else:
+            year_end_list.append(format(gain, '.2f'))
+        if balance_length > 20:
+            year_end_list.append(format(starting_balance, '20e'))
+        else:
+            year_end_list.append(format(starting_balance, '.2f'))
         final_list.append(year_end_list)
     gain = gain + starting_balance * (1 + real_interest_rate) - starting_balance
     starting_balance = starting_balance * (1 + real_interest_rate) + additional_deposit
@@ -148,9 +154,15 @@ while i < increments:
         year_end_list = []
         deposits = additional_deposit * i
         year_end_list.append(i)
-        year_end_list.append(deposits)
-        year_end_list.append(format(gain, '4e'))
-        year_end_list.append(format(starting_balance, '4e'))
+        year_end_list.append(format(deposits, '.2f'))
+        if gain_length > 20:
+            year_end_list.append(format(gain, '20e'))
+        else:
+            year_end_list.append(format(gain, '.2f'))
+        if balance_length > 20:
+            year_end_list.append(format(starting_balance, '20e'))
+        else:
+            year_end_list.append(format(starting_balance, '.2f'))
         final_list.append(year_end_list)
         break
     
