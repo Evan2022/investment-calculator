@@ -30,6 +30,8 @@ final_list = [
 
 selections = []
 
+increment_list = ["daily", "daily ", "weekly", "weekly ", "monthly", "monthly ", "yearly", "yearly "]
+
 
 while True:
     try:
@@ -51,10 +53,8 @@ while True:
         typewrite("Please enter a number as the interest rate....\n")
         print(Fore.WHITE + "\n")
 
-increment_list = ["daily", "daily ", "weekly", "weekly ", "monthly", "monthly ", "yearly", "yearly "]
 increment_rate = input("Increment timeframe (daily, weekly, monthly, yearly):\n")
 increment_rate = increment_rate.lower()
-
 while (increment_rate not in increment_list):
     print(Fore.RED)
     typewrite("Please enter either daily, weekly, monthly or yearly....\n")
@@ -132,11 +132,14 @@ i = 0
 while i < increments:
     year_end_list = []
     deposits = additional_deposit * i
+    deposit_length = len(str(deposits))
+    gain_length = len(str(gain))
+    balance_length = len(str(starting_balance))
     if i%increment_rate == 0:
         year_end_list.append(i)
         year_end_list.append(deposits)
-        year_end_list.append(format(gain, '.2f'))
-        year_end_list.append(format(starting_balance, '.2f'))
+        year_end_list.append(format(gain, '4e'))
+        year_end_list.append(format(starting_balance, '4e'))
         final_list.append(year_end_list)
     gain = gain + starting_balance * (1 + real_interest_rate) - starting_balance
     starting_balance = starting_balance * (1 + real_interest_rate) + additional_deposit
@@ -146,9 +149,9 @@ while i < increments:
         deposits = additional_deposit * i
         year_end_list.append(i)
         year_end_list.append(deposits)
-        year_end_list.append(format(gain, '.2f'))
-        year_end_list.append(format(starting_balance, '.2f'))
+        year_end_list.append(format(gain, '4e'))
+        year_end_list.append(format(starting_balance, '4e'))
         final_list.append(year_end_list)
         break
     
-print(tabulate(final_list, tablefmt="grid"))
+print(tabulate(final_list, tablefmt="plain"))

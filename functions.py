@@ -2,12 +2,13 @@ import sys
 import os
 import time
 
+
 # typewrite function taken from https://www.youtube.com/watch?v=A_1THfBpCH8&list=LL&index=1 
 
 def typewrite(string):
     """
-    Loops through a prints each letter one after the 
-    other left to right. 
+    Loops through a prints each letter one after the
+    other left to right.
     """
     for i in string:
         sys.stdout.write(i)
