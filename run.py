@@ -168,5 +168,5 @@ while i < increments:
     
 print(tabulate(final_list, tablefmt="grid"))
 print(Fore.GREEN + "\n")
-typewrite("If you're lucky enough to be a Quintillionaire or better at the end of your investment,\nyour results will be displayed as exponential numbers.")
+typewrite("If you're lucky enough to be a Quintillionaire or better at the end of\nyour investment, your results will be displayed as exponential numbers.")
 print(Fore.WHITE + "\n")
