@@ -1,6 +1,4 @@
 # Write your code to expect a terminal of 80 characters wide and 24 rows high
-
-import sys
 import time
 import pyfiglet
 import colorama
@@ -13,12 +11,13 @@ from functions import typewrite, restart_program
 print(Fore.GREEN + pyfiglet.figlet_format("Investment Calculator", justify="center", font="slant"))
 
 print(Fore.WHITE)
-typewrite('"Most people overestimate what they can do in one year and underestimate\nwhat they can do in ten years."- Bill Gates \n')
+typewrite('''"Most people overestimate what they can do in one year and underestimate
+what they can do in ten years."- Bill Gates \n''')
 print("\n")
 
-typewrite("This calculator has been built to show the power of consistent long term\nsaving and investing.\n")
+typewrite("""This calculator has been built to show the power of consistent long term
+saving and investing.\n""")
 print("\n")
-
 
 user_selections = [
     ["BALANCE", "INTEREST RATE", "TIMEFRAME", "ADDITIONAL DEPOSIT", "YEARS"]
@@ -30,8 +29,7 @@ final_list = [
 
 selections = []
 
-increment_list = ["daily", "daily ", "weekly", "weekly ", "monthly", "monthly ", "yearly", "yearly "]
-
+increment_list = ["daily", "daily ", "weekly", "weekly ", "monthly","monthly ", "yearly", "yearly "]
 
 while True:
     try:
@@ -53,15 +51,15 @@ while True:
         typewrite("Please enter a number as the interest rate....\n")
         print(Fore.WHITE + "\n")
 
-increment_rate = input("Increment timeframe (daily, weekly, monthly, yearly):\n")
-increment_rate = increment_rate.lower()
-while (increment_rate not in increment_list):
+INCREMENT_RATE = input("Increment timeframe (daily, weekly, monthly, yearly):\n")
+INCREMENT_RATE = INCREMENT_RATE.lower()
+while INCREMENT_RATE not in increment_list:
     print(Fore.RED)
     typewrite("Please enter either daily, weekly, monthly or yearly....\n")
     print(Fore.WHITE + "\n")
-    increment_rate = input("Increment timeframe (daily, weekly, monthly, yearly):\n")
+    INCREMENT_RATE = input("Increment timeframe (daily, weekly, monthly, yearly):\n")
     print("\n")
-    increment_rate = increment_rate.lower()
+    INCREMENT_RATE = INCREMENT_RATE.lower()
 
 while True:
     try:
@@ -86,7 +84,7 @@ while True:
 
 selections.append(starting_balance)
 selections.append(interest_rate)
-selections.append(increment_rate)
+selections.append(INCREMENT_RATE)
 selections.append(additional_deposit)
 selections.append(compound_period)
 user_selections.append(selections)
@@ -97,7 +95,7 @@ print("\n")
 print(tabulate(user_selections, tablefmt="grid"))
 print("\n")
 
-while True: 
+while True:
     calculate_list = ["yes", "yes ", "y", "y "]
     reload_list = ["no", "no ", "n", "n "]
     calculate = input("Are you happy with your selections?:\n")
@@ -115,39 +113,38 @@ while True:
         print(Fore.WHITE + "\n")
 
 
-if increment_rate == "daily":
-    increment_rate = 365
-elif increment_rate == "weekly":
-    increment_rate = 52
-elif increment_rate == "monthly":
-    increment_rate = 12
+if INCREMENT_RATE == "daily":
+    INCREMENT_RATE = 365
+elif INCREMENT_RATE == "weekly":
+    INCREMENT_RATE = 52
+elif INCREMENT_RATE == "monthly":
+    INCREMENT_RATE = 12
 else:
-    increment_rate = 1
+    INCREMENT_RATE = 1
 
 real_interest_rate = interest_rate * 0.01
-increments = increment_rate * compound_period
+increments = INCREMENT_RATE * compound_period
 
-gain = 0
+GAIN = 0
 i = 0
 while i < increments:
     year_end_list = []
     deposits = additional_deposit * i
-    deposit_length = len(str(deposits))
-    gain_length = len(str(gain))
-    balance_length = len(str(starting_balance))
-    if i%increment_rate == 0:
+    GAIN_LENGTH = len(str(GAIN))
+    BALANCE_LENGTH = len(str(starting_balance))
+    if i % INCREMENT_RATE == 0:
         year_end_list.append(i)
         year_end_list.append(format(deposits, '.2f'))
-        if gain_length > 20:
-            year_end_list.append(format(gain, '20e'))
+        if GAIN_LENGTH > 20:
+            year_end_list.append(format(GAIN, '20e'))
         else:
-            year_end_list.append(format(gain, '.2f'))
-        if balance_length > 20:
+            year_end_list.append(format(GAIN, '.2f'))
+        if BALANCE_LENGTH > 20:
             year_end_list.append(format(starting_balance, '20e'))
         else:
             year_end_list.append(format(starting_balance, '.2f'))
         final_list.append(year_end_list)
-    gain = gain + starting_balance * (1 + real_interest_rate) - starting_balance
+    GAIN = GAIN + starting_balance * (1 + real_interest_rate) - starting_balance
     starting_balance = starting_balance * (1 + real_interest_rate) + additional_deposit
     i += 1
     if i == increments:
@@ -155,18 +152,19 @@ while i < increments:
         deposits = additional_deposit * i
         year_end_list.append(i)
         year_end_list.append(format(deposits, '.2f'))
-        if gain_length > 20:
-            year_end_list.append(format(gain, '20e'))
+        if GAIN_LENGTH > 20:
+            year_end_list.append(format(GAIN, '20e'))
         else:
-            year_end_list.append(format(gain, '.2f'))
-        if balance_length > 20:
+            year_end_list.append(format(GAIN, '.2f'))
+        if BALANCE_LENGTH > 20:
             year_end_list.append(format(starting_balance, '20e'))
         else:
             year_end_list.append(format(starting_balance, '.2f'))
         final_list.append(year_end_list)
         break
-    
+
 print(tabulate(final_list, tablefmt="grid"))
 print(Fore.GREEN + "\n")
-typewrite("If you're lucky enough to be a Quintillionaire or better at the end of\nyour investment, your results will be displayed as exponential numbers.")
+typewrite("""If you're lucky enough to be a Quintillionaire or better at the end of
+your investment, your results will be displayed as exponential numbers.""")
 print(Fore.WHITE + "\n")

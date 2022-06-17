@@ -3,7 +3,8 @@ import os
 import time
 
 
-# typewrite function taken from https://www.youtube.com/watch?v=A_1THfBpCH8&list=LL&index=1 
+# typewrite function taken from
+# https://www.youtube.com/watch?v=A_1THfBpCH8&list=LL&index=1
 
 def typewrite(string):
     """
@@ -15,7 +16,9 @@ def typewrite(string):
         sys.stdout.flush()
         time.sleep(0.05)
 
-# restart_program fuction copied from https://www.daniweb.com/programming/software-development/code/260268/restart-your-python-program
+# restart_program fuction copied from
+# https://www.daniweb.com/programming/software-development/code/260268/restart-your-python-program
+
 
 def restart_program():
     """
